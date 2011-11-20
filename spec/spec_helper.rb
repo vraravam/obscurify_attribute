@@ -2,6 +2,8 @@ ENV["RAILS_ENV"] = "test"
 
 require 'rubygems'
 require 'bundler/setup'
+require 'active_model'
+require 'active_model/validations'
 require 'obscurify_attribute'
 
 RSpec.configure do |config|
@@ -9,7 +11,8 @@ RSpec.configure do |config|
 
   config.before(:each) do
     class ObscurifyAttributeItem
-      include ActiveModel::Validations
+      include ::ActiveModel::Validations
+      include ::ObscurifyAttribute::Validations
 
       attr_accessor :first_name, :last_name
 

@@ -13,7 +13,9 @@ Add the following line to your Gemfile
 Add the following line into your ActiveRecord (or ActiveResource) model:
 
     class Payment < ActiveRecord::Base
-        # if credit_card is one of the attributes, but it should not be shown to the user...
+        include ObscurifyAttribute::Validations
+
+        # if credit_card is one of the sensitive attributes, but it should not be shown to the user...
         obscurify :credit_card, :payment_information, :message => "foo bar"
     end
 
